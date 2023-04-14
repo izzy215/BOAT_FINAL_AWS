@@ -10,7 +10,7 @@ pipeline {
         stage('Git Pull') {
             steps {
                  // Get some code from a GitHub repository
-                git branch: 'main', credentialsId: 'jenkinsid', url: 'https://github.com/깃허브userid/web'
+               git branch: 'main', credentialsId: 'boat_id', url: 'https://github.com/izzy215/BOAT_FINAL_AWS.git'
 
             }
         }
