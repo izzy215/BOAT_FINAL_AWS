@@ -1,7 +1,7 @@
 pipeline {
     environment { 
         repository = 'jihyeon4/boat'  //docker hub id와 repository 이름
-        DOCKERHUB_CREDENTIALS = credentials('boat_id') // jenkins에 등록해 놓은 docker hub credentials 이름      
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub') // jenkins에 등록해 놓은 docker hub credentials 이름      
       
         TARGET_HOST = 'ubuntu@43.201.96.236'
     }
