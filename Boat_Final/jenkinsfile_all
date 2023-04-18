@@ -126,21 +126,16 @@ pipeline {
         
         
        
-         stage('multiline ssh') {
+       stage('multiline ssh') {
             steps {        
                 sshagent (credentials: ['deploy-ec2']) {
                 sh """
                     ssh -o StrictHostKeyChecking=no ${TARGET_HOST} '
-                    rm -rf test
-                    mkdir test
-                    cd test
-                    mkdir test2
-                    cd test2
-                    pwd
+                    sudo docker-compose up -d
                     '
                 """
                 }
-            }
-        }
+           }
+     }
 }
 }
