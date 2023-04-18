@@ -3,7 +3,7 @@ pipeline {
         repository = 'jihyeon4/boat'  //docker hub id와 repository 이름
         DOCKERHUB_CREDENTIALS = credentials('boat_id') // jenkins에 등록해 놓은 docker hub credentials 이름      
       
-        TARGET_HOST = 'ubuntu@43.201.96.138'
+        TARGET_HOST = 'ubuntu@43.201.96.236'
     }
     agent any
 
