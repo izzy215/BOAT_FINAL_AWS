@@ -50,6 +50,7 @@ import com.boat.domain.Board;
 import com.boat.domain.ChatMessage;
 import com.boat.domain.MailVO;
 import com.boat.domain.Member;
+import com.boat.domain.MySaveFolder;
 import com.boat.sns.NaverLoginBO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.scribejava.core.model.OAuth2AccessToken;
@@ -59,6 +60,7 @@ import com.github.scribejava.core.model.OAuth2AccessToken;
 public class MemberController {
 	private static final Logger Logger = LoggerFactory.getLogger(MemberController.class);
  
+	private MySaveFolder mysavefolder;
 	private MemberService memberservice;
 	private NaverLoginBO naverloginbo;//네이버 api
 	private SendMail sendMail;
@@ -72,12 +74,13 @@ public class MemberController {
 	@Autowired
 	public MemberController(MemberService memberservice, NaverLoginBO naverloginbo, 
 			SendMail sendMail, PasswordEncoder passwordEncoder, JavaMailSender javaMailSender,
-			ChatMessageService chatmessageservice) {
+			ChatMessageService chatmessageservice,MySaveFolder mysavefolder) {
 		this.memberservice = memberservice;
 		this.naverloginbo = naverloginbo;
 		this.sendMail = sendMail;
 		this.passwordEncoder = passwordEncoder;
 		this.chatmessageservice = chatmessageservice;
+		this.mysavefolder = mysavefolder;
 	}
 
 	
@@ -128,7 +131,7 @@ public class MemberController {
 		if(!uploadfile.isEmpty()) {
 			String fileName = uploadfile.getOriginalFilename();//원래 파일명
 			
-			String saveFolder = new File("src/main/resources/static/profile").getAbsolutePath();
+			String saveFolder = mysavefolder.getSavefolder();
 //			String saveFolder= profileSaveFolder.getProfilesavefolder();
 			List<String> fileDBName = fileDBName(fileName, saveFolder, member.getEMPNO());
 			Logger.info("fileDBName : " + fileDBName);
