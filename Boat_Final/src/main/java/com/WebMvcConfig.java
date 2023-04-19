@@ -25,6 +25,8 @@ private static final String[] CLASSPATH_RESOURCE_LOCATIONS
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/resources/profile/**")
+		.addResourceLocations("file:///home/ubuntu/download/upload/");
 		registry.addResourceHandler("/resources/**")
 		.addResourceLocations(CLASSPATH_RESOURCE_LOCATIONS);
 	}
